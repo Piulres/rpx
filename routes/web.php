@@ -25,8 +25,26 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::post('roles_mass_destroy', ['uses' => 'Admin\RolesController@massDestroy', 'as' => 'roles.mass_destroy']);
     Route::resource('users', 'Admin\UsersController');
     Route::post('users_mass_destroy', ['uses' => 'Admin\UsersController@massDestroy', 'as' => 'users.mass_destroy']);
+    Route::resource('user_actions', 'Admin\UserActionsController');
+    Route::resource('teams', 'Admin\TeamsController');
+    Route::post('teams_mass_destroy', ['uses' => 'Admin\TeamsController@massDestroy', 'as' => 'teams.mass_destroy']);
+    Route::resource('content_categories', 'Admin\ContentCategoriesController');
+    Route::post('content_categories_mass_destroy', ['uses' => 'Admin\ContentCategoriesController@massDestroy', 'as' => 'content_categories.mass_destroy']);
+    Route::resource('content_tags', 'Admin\ContentTagsController');
+    Route::post('content_tags_mass_destroy', ['uses' => 'Admin\ContentTagsController@massDestroy', 'as' => 'content_tags.mass_destroy']);
+    Route::resource('content_pages', 'Admin\ContentPagesController');
+    Route::post('content_pages_mass_destroy', ['uses' => 'Admin\ContentPagesController@massDestroy', 'as' => 'content_pages.mass_destroy']);
+    Route::get('internal_notifications/read', 'Admin\InternalNotificationsController@read');
+    Route::resource('internal_notifications', 'Admin\InternalNotificationsController');
+    Route::post('internal_notifications_mass_destroy', ['uses' => 'Admin\InternalNotificationsController@massDestroy', 'as' => 'internal_notifications.mass_destroy']);
+
+    Route::model('messenger', 'App\MessengerTopic');
+    Route::get('messenger/inbox', 'Admin\MessengerController@inbox')->name('messenger.inbox');
+    Route::get('messenger/outbox', 'Admin\MessengerController@outbox')->name('messenger.outbox');
+    Route::resource('messenger', 'Admin\MessengerController');
 
 
-
- 
-});
+    Route::get('search', 'MegaSearchController@search')->name('mega-search');
+    Route::get('language/{lang}', function ($lang) {
+        return redirect()->back()->withCookie(cookie()->forever('language', $lang));
+    })->name('language');});

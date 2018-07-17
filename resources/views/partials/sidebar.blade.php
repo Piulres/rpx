@@ -5,7 +5,9 @@
     <section class="sidebar">
         <ul class="sidebar-menu">
 
-             
+            <li>
+                <select class="searchable-field form-control"></select>
+            </li>
 
             <li class="{{ $request->segment(1) == 'home' ? 'active' : '' }}">
                 <a href="{{ url('/') }}">
@@ -48,13 +50,90 @@
                         </a>
                     </li>@endcan
                     
+                    @can('user_action_access')
+                    <li>
+                        <a href="{{ route('admin.user_actions.index') }}">
+                            <i class="fa fa-th-list"></i>
+                            <span>@lang('global.user-actions.title')</span>
+                        </a>
+                    </li>@endcan
+                    
+                    @can('team_access')
+                    <li>
+                        <a href="{{ route('admin.teams.index') }}">
+                            <i class="fa fa-users"></i>
+                            <span>@lang('global.teams.title')</span>
+                        </a>
+                    </li>@endcan
+                    
                 </ul>
+            </li>@endcan
+            
+            @can('content_management_access')
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-book"></i>
+                    <span>@lang('global.content-management.title')</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    @can('content_category_access')
+                    <li>
+                        <a href="{{ route('admin.content_categories.index') }}">
+                            <i class="fa fa-folder"></i>
+                            <span>@lang('global.content-categories.title')</span>
+                        </a>
+                    </li>@endcan
+                    
+                    @can('content_tag_access')
+                    <li>
+                        <a href="{{ route('admin.content_tags.index') }}">
+                            <i class="fa fa-tags"></i>
+                            <span>@lang('global.content-tags.title')</span>
+                        </a>
+                    </li>@endcan
+                    
+                    @can('content_page_access')
+                    <li>
+                        <a href="{{ route('admin.content_pages.index') }}">
+                            <i class="fa fa-file-o"></i>
+                            <span>@lang('global.content-pages.title')</span>
+                        </a>
+                    </li>@endcan
+                    
+                </ul>
+            </li>@endcan
+            
+            @can('internal_notification_access')
+            <li>
+                <a href="{{ route('admin.internal_notifications.index') }}">
+                    <i class="fa fa-briefcase"></i>
+                    <span>@lang('global.internal-notifications.title')</span>
+                </a>
             </li>@endcan
             
 
             
 
             
+            @php ($unread = App\MessengerTopic::countUnread())
+            <li class="{{ $request->segment(2) == 'messenger' ? 'active' : '' }} {{ ($unread > 0 ? 'unread' : '') }}">
+                <a href="{{ route('admin.messenger.index') }}">
+                    <i class="fa fa-envelope"></i>
+
+                    <span>Messages</span>
+                    @if($unread > 0)
+                        {{ ($unread > 0 ? '('.$unread.')' : '') }}
+                    @endif
+                </a>
+            </li>
+            <style>
+                .page-sidebar-menu .unread * {
+                    font-weight:bold !important;
+                }
+            </style>
 
 
 
