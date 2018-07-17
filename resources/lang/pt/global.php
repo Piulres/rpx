@@ -4,7 +4,14 @@ return [
 		'user-management' => [		'title' => 'Gestão de usuários',		'fields' => [		],	],
 		'permissions' => [		'title' => 'Permissões',		'fields' => [			'title' => 'Título',		],	],
 		'roles' => [		'title' => 'Funções',		'fields' => [			'title' => 'Título',			'permission' => 'Permissões',		],	],
-		'users' => [		'title' => 'Usuários',		'fields' => [			'name' => 'Nome',			'email' => 'E-mail',			'password' => 'Senha',			'role' => 'Função',			'remember-token' => 'Lembrar Senha',		],	],
+		'users' => [		'title' => 'Usuários',		'fields' => [			'name' => 'Nome',			'email' => 'E-mail',			'password' => 'Senha',			'role' => 'Função',			'remember-token' => 'Lembrar Senha',			'team' => 'Equipe',		],	],
+		'user-actions' => [		'title' => 'Ações do usuário',		'created_at' => 'Tempo',		'fields' => [			'user' => 'Usuário',			'action' => 'Ação',			'action-model' => 'Modelo de ação',			'action-id' => 'ID de ação',		],	],
+		'teams' => [		'title' => 'Teams',		'fields' => [			'name' => 'Name',		],	],
+		'content-management' => [		'title' => 'Gestão de conteúdo',		'fields' => [		],	],
+		'content-categories' => [		'title' => 'Categorias',		'fields' => [			'title' => 'Categoria',			'slug' => 'Slug',		],	],
+		'content-tags' => [		'title' => 'Tags',		'fields' => [			'title' => 'Tag',			'slug' => 'Slug',		],	],
+		'content-pages' => [		'title' => 'Páginas',		'fields' => [			'title' => 'Título',			'category-id' => 'Categorias',			'tag-id' => 'Tags',			'page-text' => 'Texto',			'excerpt' => 'Resumo',			'featured-image' => 'Imagem em destaque',		],	],
+		'internal-notifications' => [		'title' => 'Notifications',		'fields' => [			'text' => 'Text',			'link' => 'Link',			'users' => 'Users',		],	],
 	'app_create' => 'Criar',
 	'app_save' => 'Salvar',
 	'app_edit' => 'Editar',
