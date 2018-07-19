@@ -10,8 +10,6 @@ use App\Http\Requests\Admin\StoreTimeEntriesRequest;
 use App\Http\Requests\Admin\UpdateTimeEntriesRequest;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Input;
 
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
