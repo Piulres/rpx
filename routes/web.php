@@ -37,6 +37,13 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::get('internal_notifications/read', 'Admin\InternalNotificationsController@read');
     Route::resource('internal_notifications', 'Admin\InternalNotificationsController');
     Route::post('internal_notifications_mass_destroy', ['uses' => 'Admin\InternalNotificationsController@massDestroy', 'as' => 'internal_notifications.mass_destroy']);
+    Route::resource('time_work_types', 'Admin\TimeWorkTypesController');
+    Route::post('time_work_types_mass_destroy', ['uses' => 'Admin\TimeWorkTypesController@massDestroy', 'as' => 'time_work_types.mass_destroy']);
+    Route::resource('time_projects', 'Admin\TimeProjectsController');
+    Route::post('time_projects_mass_destroy', ['uses' => 'Admin\TimeProjectsController@massDestroy', 'as' => 'time_projects.mass_destroy']);
+    Route::resource('time_entries', 'Admin\TimeEntriesController');
+    Route::post('time_entries_mass_destroy', ['uses' => 'Admin\TimeEntriesController@massDestroy', 'as' => 'time_entries.mass_destroy']);
+    Route::resource('time_reports', 'Admin\TimeReportsController');
 
     Route::model('messenger', 'App\MessengerTopic');
     Route::get('messenger/inbox', 'Admin\MessengerController@inbox')->name('messenger.inbox');
