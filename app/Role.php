@@ -13,14 +13,16 @@ class Role extends Model
 {
     protected $fillable = ['title'];
     protected $hidden = [];
-    public static $searchable = [
-    ];
+    
     
     public static function boot()
     {
         parent::boot();
-
-        Role::observe(new \App\Observers\UserActionsObserver);
+static::addGlobalScope('team_admin_access', function ($builder) {
+        if(auth()->check() && !app()->runningInConsole() && !auth()->user()->role->contains(1)){
+            $builder->where('id', '!=', 1);
+        }
+});
     }
     
     public function permission()

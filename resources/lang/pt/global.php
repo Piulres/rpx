@@ -17,6 +17,9 @@ return [
 		'time-projects' => [		'title' => 'Projetos',		'fields' => [			'name' => 'Nome',		],	],
 		'time-entries' => [		'title' => 'Entradas de tempo',		'fields' => [			'work-type' => 'Tipo de trabalho',			'project' => 'Projeto',			'start-time' => 'Tempo de início',			'end-time' => 'Tempo de final',		],	],
 		'time-reports' => [		'title' => 'Relatórios',		'fields' => [		],	],
+		'faq-management' => [		'title' => 'Gestão de FAQ',		'fields' => [		],	],
+		'faq-categories' => [		'title' => 'Categorias',		'fields' => [			'title' => 'Categoria',		],	],
+		'faq-questions' => [		'title' => 'Questões',		'fields' => [			'category' => 'Categoria',			'question-text' => 'Questão',			'answer-text' => 'Resposta',		],	],
 	'app_create' => 'Criar',
 	'app_save' => 'Salvar',
 	'app_edit' => 'Editar',

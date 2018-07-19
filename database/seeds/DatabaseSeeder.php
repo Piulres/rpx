@@ -13,6 +13,8 @@ class DatabaseSeeder extends Seeder
     {
         
         $this->call(ContentPageSeed::class);
+        $this->call(FaqCategorySeed::class);
+        $this->call(FaqQuestionSeed::class);
         $this->call(PermissionSeed::class);
         $this->call(RoleSeed::class);
         $this->call(UserSeed::class);

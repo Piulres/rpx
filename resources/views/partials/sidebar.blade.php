@@ -159,8 +159,53 @@
                 </a>
             </li>@endcan
             
-
+            @can('faq_management_access')
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-question"></i>
+                    <span>@lang('global.faq-management.title')</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    @can('faq_category_access')
+                    <li>
+                        <a href="{{ route('admin.faq_categories.index') }}">
+                            <i class="fa fa-briefcase"></i>
+                            <span>@lang('global.faq-categories.title')</span>
+                        </a>
+                    </li>@endcan
+                    
+                    @can('faq_question_access')
+                    <li>
+                        <a href="{{ route('admin.faq_questions.index') }}">
+                            <i class="fa fa-question"></i>
+                            <span>@lang('global.faq-questions.title')</span>
+                        </a>
+                    </li>@endcan
+                    
+                </ul>
+            </li>@endcan
             
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-line-chart"></i>
+                    <span class="title">Generated Reports</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                   <li class="{{ $request->is('/reports/report-time-management') }}">
+                        <a href="{{ url('/admin/reports/report-time-management') }}">
+                            <i class="fa fa-line-chart"></i>
+                            <span class="title">Report Time Management</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
 
             
             @php ($unread = App\MessengerTopic::countUnread())
