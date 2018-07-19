@@ -21,3 +21,23 @@ php artisan serve
 
 Email: admin@admin.com
 Password: password
+
+## Changelog
+
+## [1.0.0] - 2018-07-18
+### Added
+
+- AJAX Datatables
+- User Logs
+- Teams Multi-Tenancy
+- Internal Messages
+- Internal Notifications
+- Content Management
+- Language Switcher
+- Mega Search
+
+## [1.0.1] - 2018-07-19
+### Added
+- System calendar
+- Multi-tenancy
+- Reports generator
