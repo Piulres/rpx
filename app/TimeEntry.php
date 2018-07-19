@@ -3,6 +3,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
+use App\Traits\FilterByUser;
+use App\Traits\FilterByUser;
 
 /**
  * Class TimeEntry
@@ -12,10 +14,14 @@ use Carbon\Carbon;
  * @property string $project
  * @property string $start_time
  * @property string $end_time
+ * @property string $created_by
+ * @property string $created_by_team
 */
 class TimeEntry extends Model
 {
-    protected $fillable = ['start_time', 'end_time', 'work_type_id', 'project_id'];
+    use FilterByUser, FilterByUser;
+
+    protected $fillable = ['start_time', 'end_time', 'work_type_id', 'project_id', 'created_by_id', 'created_by_team_id'];
     protected $hidden = [];
     public static $searchable = [
     ];
@@ -104,6 +110,24 @@ class TimeEntry extends Model
             return '';
         }
     }
+
+    /**
+     * Set to null if empty
+     * @param $input
+     */
+    public function setCreatedByIdAttribute($input)
+    {
+        $this->attributes['created_by_id'] = $input ? $input : null;
+    }
+
+    /**
+     * Set to null if empty
+     * @param $input
+     */
+    public function setCreatedByTeamIdAttribute($input)
+    {
+        $this->attributes['created_by_team_id'] = $input ? $input : null;
+    }
     
     public function work_type()
     {
@@ -113,6 +137,16 @@ class TimeEntry extends Model
     public function project()
     {
         return $this->belongsTo(TimeProject::class, 'project_id');
+    }
+    
+    public function created_by()
+    {
+        return $this->belongsTo(User::class, 'created_by_id');
+    }
+    
+    public function created_by_team()
+    {
+        return $this->belongsTo(Team::class, 'created_by_team_id');
     }
     
 }

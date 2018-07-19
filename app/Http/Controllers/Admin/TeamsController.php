@@ -9,6 +9,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreTeamsRequest;
 use App\Http\Requests\Admin\UpdateTeamsRequest;
 
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 class TeamsController extends Controller
 {
     /**
@@ -108,9 +111,11 @@ class TeamsController extends Controller
         if (! Gate::allows('team_view')) {
             return abort(401);
         }
+        $time_entries = \App\TimeEntry::where('created_by_team_id', $id)->get();$users = \App\User::where('team_id', $id)->get();
+
         $team = Team::findOrFail($id);
 
-        return view('admin.teams.show', compact('team'));
+        return view('admin.teams.show', compact('team', 'time_entries', 'users'));
     }
 
 

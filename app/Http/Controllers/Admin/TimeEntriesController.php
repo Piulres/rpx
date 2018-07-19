@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreTimeEntriesRequest;
 use App\Http\Requests\Admin\UpdateTimeEntriesRequest;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Input;
 
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
@@ -24,7 +28,20 @@ class TimeEntriesController extends Controller
         if (! Gate::allows('time_entry_access')) {
             return abort(401);
         }
-
+        if ($filterBy = Input::get('filter')) {
+            if ($filterBy == 'all') {
+                Session::put('TimeEntry.filter', 'all');
+            } elseif ($filterBy == 'my') {
+                Session::put('TimeEntry.filter', 'my');
+            }
+        }
+        if ($filterBy = Input::get('filter')) {
+            if ($filterBy == 'all') {
+                Session::put('TimeEntry.filter', 'all');
+            } elseif ($filterBy == 'my') {
+                Session::put('TimeEntry.filter', 'my');
+            }
+        }
 
                 $time_entries = TimeEntry::all();
 
@@ -44,8 +61,10 @@ class TimeEntriesController extends Controller
         
         $work_types = \App\TimeWorkType::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');
         $projects = \App\TimeProject::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');
+        $created_bies = \App\User::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');
+        $created_by_teams = \App\Team::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');
 
-        return view('admin.time_entries.create', compact('work_types', 'projects'));
+        return view('admin.time_entries.create', compact('work_types', 'projects', 'created_bies', 'created_by_teams'));
     }
 
     /**
@@ -81,10 +100,12 @@ class TimeEntriesController extends Controller
         
         $work_types = \App\TimeWorkType::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');
         $projects = \App\TimeProject::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');
+        $created_bies = \App\User::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');
+        $created_by_teams = \App\Team::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');
 
         $time_entry = TimeEntry::findOrFail($id);
 
-        return view('admin.time_entries.edit', compact('time_entry', 'work_types', 'projects'));
+        return view('admin.time_entries.edit', compact('time_entry', 'work_types', 'projects', 'created_bies', 'created_by_teams'));
     }
 
     /**
