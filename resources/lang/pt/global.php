@@ -12,6 +12,11 @@ return [
 		'content-tags' => [		'title' => 'Tags',		'fields' => [			'title' => 'Tag',			'slug' => 'Slug',		],	],
 		'content-pages' => [		'title' => 'Páginas',		'fields' => [			'title' => 'Título',			'category-id' => 'Categorias',			'tag-id' => 'Tags',			'page-text' => 'Texto',			'excerpt' => 'Resumo',			'featured-image' => 'Imagem em destaque',		],	],
 		'internal-notifications' => [		'title' => 'Notifications',		'fields' => [			'text' => 'Text',			'link' => 'Link',			'users' => 'Users',		],	],
+		'time-management' => [		'title' => 'Time management',		'fields' => [		],	],
+		'time-work-types' => [		'title' => 'Work types',		'fields' => [			'name' => 'Name',		],	],
+		'time-projects' => [		'title' => 'Projetos',		'fields' => [			'name' => 'Nome',		],	],
+		'time-entries' => [		'title' => 'Entradas de tempo',		'fields' => [			'work-type' => 'Tipo de trabalho',			'project' => 'Projeto',			'start-time' => 'Tempo de início',			'end-time' => 'Tempo de final',		],	],
+		'time-reports' => [		'title' => 'Relatórios',		'fields' => [		],	],
 	'app_create' => 'Criar',
 	'app_save' => 'Salvar',
 	'app_edit' => 'Editar',

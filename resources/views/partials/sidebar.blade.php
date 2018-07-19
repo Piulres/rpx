@@ -69,6 +69,51 @@
                 </ul>
             </li>@endcan
             
+            @can('time_management_access')
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-clock-o"></i>
+                    <span>@lang('global.time-management.title')</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    @can('time_work_type_access')
+                    <li>
+                        <a href="{{ route('admin.time_work_types.index') }}">
+                            <i class="fa fa-th"></i>
+                            <span>@lang('global.time-work-types.title')</span>
+                        </a>
+                    </li>@endcan
+                    
+                    @can('time_project_access')
+                    <li>
+                        <a href="{{ route('admin.time_projects.index') }}">
+                            <i class="fa fa-briefcase"></i>
+                            <span>@lang('global.time-projects.title')</span>
+                        </a>
+                    </li>@endcan
+                    
+                    @can('time_entry_access')
+                    <li>
+                        <a href="{{ route('admin.time_entries.index') }}">
+                            <i class="fa fa-briefcase"></i>
+                            <span>@lang('global.time-entries.title')</span>
+                        </a>
+                    </li>@endcan
+                    
+                    @can('time_report_access')
+                    <li>
+                        <a href="{{ route('admin.time_reports.index') }}">
+                            <i class="fa fa-briefcase"></i>
+                            <span>@lang('global.time-reports.title')</span>
+                        </a>
+                    </li>@endcan
+                    
+                </ul>
+            </li>@endcan
+            
             @can('content_management_access')
             <li class="treeview">
                 <a href="#">
