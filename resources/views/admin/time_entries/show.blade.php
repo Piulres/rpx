@@ -28,6 +28,14 @@
                             <th>@lang('global.time-entries.fields.end-time')</th>
                             <td field-key='end_time'>{{ $time_entry->end_time }}</td>
                         </tr>
+                        <tr>
+                            <th>@lang('global.time-entries.fields.created-by')</th>
+                            <td field-key='created_by'>{{ $time_entry->created_by->name or '' }}</td>
+                        </tr>
+                        <tr>
+                            <th>@lang('global.time-entries.fields.created-by-team')</th>
+                            <td field-key='created_by_team'>{{ $time_entry->created_by_team->name or '' }}</td>
+                        </tr>
                     </table>
                 </div>
             </div>

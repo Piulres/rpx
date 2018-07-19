@@ -35,6 +35,8 @@
                         <th>@lang('global.time-entries.fields.project')</th>
                         <th>@lang('global.time-entries.fields.start-time')</th>
                         <th>@lang('global.time-entries.fields.end-time')</th>
+                        <th>@lang('global.time-entries.fields.created-by')</th>
+                        <th>@lang('global.time-entries.fields.created-by-team')</th>
                                                 <th>&nbsp;</th>
 
         </tr>
@@ -48,6 +50,8 @@
                                 <td field-key='project'>{{ $time_entry->project->name or '' }}</td>
                                 <td field-key='start_time'>{{ $time_entry->start_time }}</td>
                                 <td field-key='end_time'>{{ $time_entry->end_time }}</td>
+                                <td field-key='created_by'>{{ $time_entry->created_by->name or '' }}</td>
+                                <td field-key='created_by_team'>{{ $time_entry->created_by_team->name or '' }}</td>
                                                                 <td>
                                     @can('time_entry_view')
                                     <a href="{{ route('admin.time_entries.show',[$time_entry->id]) }}" class="btn btn-xs btn-primary">@lang('global.app_view')</a>
@@ -70,7 +74,7 @@
             @endforeach
         @else
             <tr>
-                <td colspan="9">@lang('global.app_no_entries_in_table')</td>
+                <td colspan="11">@lang('global.app_no_entries_in_table')</td>
             </tr>
         @endif
     </tbody>

@@ -15,7 +15,7 @@ return [
 		'time-management' => [		'title' => 'Time management',		'fields' => [		],	],
 		'time-work-types' => [		'title' => 'Work types',		'fields' => [			'name' => 'Name',		],	],
 		'time-projects' => [		'title' => 'Projetos',		'fields' => [			'name' => 'Nome',		],	],
-		'time-entries' => [		'title' => 'Entradas de tempo',		'fields' => [			'work-type' => 'Tipo de trabalho',			'project' => 'Projeto',			'start-time' => 'Tempo de início',			'end-time' => 'Tempo de final',		],	],
+		'time-entries' => [		'title' => 'Entradas de tempo',		'fields' => [			'work-type' => 'Tipo de trabalho',			'project' => 'Projeto',			'start-time' => 'Tempo de início',			'end-time' => 'Tempo de final',			'created-by' => 'Created by',			'created-by-team' => 'Created by Team',		],	],
 		'time-reports' => [		'title' => 'Relatórios',		'fields' => [		],	],
 		'faq-management' => [		'title' => 'Gestão de FAQ',		'fields' => [		],	],
 		'faq-categories' => [		'title' => 'Categorias',		'fields' => [			'title' => 'Categoria',		],	],

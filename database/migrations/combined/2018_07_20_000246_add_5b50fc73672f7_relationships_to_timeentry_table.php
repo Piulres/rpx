@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Add5b50f295ce6bcRelationshipsToTimeEntryTable extends Migration
+class Add5b50fc73672f7RelationshipsToTimeEntryTable extends Migration
 {
     /**
      * Run the migrations.
@@ -20,6 +20,14 @@ class Add5b50f295ce6bcRelationshipsToTimeEntryTable extends Migration
                 if (!Schema::hasColumn('time_entries', 'project_id')) {
                 $table->integer('project_id')->unsigned()->nullable();
                 $table->foreign('project_id', '186312_5b509e609b81d')->references('id')->on('time_projects')->onDelete('cascade');
+                }
+                if (!Schema::hasColumn('time_entries', 'created_by_id')) {
+                $table->integer('created_by_id')->unsigned()->nullable();
+                $table->foreign('created_by_id', '186312_5b50fc726754e')->references('id')->on('users')->onDelete('cascade');
+                }
+                if (!Schema::hasColumn('time_entries', 'created_by_team_id')) {
+                $table->integer('created_by_team_id')->unsigned()->nullable();
+                $table->foreign('created_by_team_id', '186312_5b50fc72786bf')->references('id')->on('teams')->onDelete('cascade');
                 }
                 
         });
@@ -42,6 +50,16 @@ class Add5b50f295ce6bcRelationshipsToTimeEntryTable extends Migration
                 $table->dropForeign('186312_5b509e609b81d');
                 $table->dropIndex('186312_5b509e609b81d');
                 $table->dropColumn('project_id');
+            }
+            if(Schema::hasColumn('time_entries', 'created_by_id')) {
+                $table->dropForeign('186312_5b50fc726754e');
+                $table->dropIndex('186312_5b50fc726754e');
+                $table->dropColumn('created_by_id');
+            }
+            if(Schema::hasColumn('time_entries', 'created_by_team_id')) {
+                $table->dropForeign('186312_5b50fc72786bf');
+                $table->dropIndex('186312_5b50fc72786bf');
+                $table->dropColumn('created_by_team_id');
             }
             
         });

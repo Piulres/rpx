@@ -6,5 +6,7 @@ $factory->define(App\TimeEntry::class, function (Faker\Generator $faker) {
         "project_id" => factory('App\TimeProject')->create(),
         "start_time" => $faker->date("d-m-Y H:i:s", $max = 'now'),
         "end_time" => $faker->date("d-m-Y H:i:s", $max = 'now'),
+        "created_by_id" => factory('App\User')->create(),
+        "created_by_team_id" => factory('App\Team')->create(),
     ];
 });

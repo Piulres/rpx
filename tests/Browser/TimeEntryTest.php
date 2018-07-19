@@ -76,6 +76,8 @@ class TimeEntryTest extends DuskTestCase
                 ->assertSeeIn("td[field-key='project']", $time_entry->project->name)
                 ->assertSeeIn("td[field-key='start_time']", $time_entry->start_time)
                 ->assertSeeIn("td[field-key='end_time']", $time_entry->end_time)
+                ->assertSeeIn("td[field-key='created_by']", $time_entry->created_by->name)
+                ->assertSeeIn("td[field-key='created_by_team']", $time_entry->created_by_team->name)
                 ->logout();
         });
     }

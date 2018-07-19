@@ -129,11 +129,11 @@ class UsersController extends Controller
         $teams = \App\Team::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');$user_actions = \App\UserAction::where('user_id', $id)->get();$internal_notifications = \App\InternalNotification::whereHas('users',
                     function ($query) use ($id) {
                         $query->where('id', $id);
-                    })->get();
+                    })->get();$time_entries = \App\TimeEntry::where('created_by_id', $id)->get();
 
         $user = User::findOrFail($id);
 
-        return view('admin.users.show', compact('user', 'user_actions', 'internal_notifications'));
+        return view('admin.users.show', compact('user', 'user_actions', 'internal_notifications', 'time_entries'));
     }
 
 
