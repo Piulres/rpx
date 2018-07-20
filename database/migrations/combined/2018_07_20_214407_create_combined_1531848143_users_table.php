@@ -19,6 +19,7 @@ class CreateCombined1531848143UsersTable extends Migration
                 $table->string('email');
                 $table->string('password');
                 $table->string('remember_token')->nullable();
+                $table->tinyInteger('approved')->nullable()->default('0');
                 
                 $table->timestamps();
                 

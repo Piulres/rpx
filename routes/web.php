@@ -16,7 +16,15 @@ $this->post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail'
 $this->get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 $this->post('password/reset', 'Auth\ResetPasswordController@reset')->name('auth.password.reset');
 
-Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
+// Registration Routes..
+$this->get('register', 'Auth\RegisterController@showRegistrationForm')->name('auth.register');
+$this->post('register', 'Auth\RegisterController@register')->name('auth.register');
+
+// Social Login Routes..
+Route::get('login/{driver}', 'Auth\LoginController@redirectToSocial')->name('auth.login.social');
+Route::get('{driver}/callback', 'Auth\LoginController@handleSocialCallback')->name('auth.login.social_callback');
+
+Route::group(['middleware' => ['auth', 'approved'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::get('/home', 'HomeController@index');
     Route::get('/reports/report-time-management', 'Admin\ReportsController@reportTimeManagement');
 
@@ -36,9 +44,6 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::post('content_tags_mass_destroy', ['uses' => 'Admin\ContentTagsController@massDestroy', 'as' => 'content_tags.mass_destroy']);
     Route::resource('content_pages', 'Admin\ContentPagesController');
     Route::post('content_pages_mass_destroy', ['uses' => 'Admin\ContentPagesController@massDestroy', 'as' => 'content_pages.mass_destroy']);
-    Route::get('internal_notifications/read', 'Admin\InternalNotificationsController@read');
-    Route::resource('internal_notifications', 'Admin\InternalNotificationsController');
-    Route::post('internal_notifications_mass_destroy', ['uses' => 'Admin\InternalNotificationsController@massDestroy', 'as' => 'internal_notifications.mass_destroy']);
     Route::resource('time_work_types', 'Admin\TimeWorkTypesController');
     Route::post('time_work_types_mass_destroy', ['uses' => 'Admin\TimeWorkTypesController@massDestroy', 'as' => 'time_work_types.mass_destroy']);
     Route::resource('time_projects', 'Admin\TimeProjectsController');

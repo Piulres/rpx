@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Create5b50fc743667cInternalNotificationUserTable extends Migration
+class Create5b522d78ada72InternalNotificationUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,9 +15,9 @@ class Create5b50fc743667cInternalNotificationUserTable extends Migration
         if(! Schema::hasTable('internal_notification_user')) {
             Schema::create('internal_notification_user', function (Blueprint $table) {
                 $table->integer('internal_notification_id')->unsigned()->nullable();
-                $table->foreign('internal_notification_id', 'fk_p_185454_185447_user_i_5b50fc743683f')->references('id')->on('internal_notifications')->onDelete('cascade');
+                $table->foreign('internal_notification_id', 'fk_p_185454_185447_user_i_5b522d78adc0f')->references('id')->on('internal_notifications')->onDelete('cascade');
                 $table->integer('user_id')->unsigned()->nullable();
-                $table->foreign('user_id', 'fk_p_185447_185454_intern_5b50fc743699f')->references('id')->on('users')->onDelete('cascade');
+                $table->foreign('user_id', 'fk_p_185447_185454_intern_5b522d78add71')->references('id')->on('users')->onDelete('cascade');
                 $table->timestamp("read_at")->nullable();
 		$table->timestamp("created_at")->default(DB::raw("CURRENT_TIMESTAMP"));
             });
