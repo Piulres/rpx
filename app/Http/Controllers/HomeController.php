@@ -25,8 +25,8 @@ class HomeController extends Controller
     public function index()
     {
         
-        $teams = \App\Team::latest()->limit(5)->get(); 
         $users = \App\User::latest()->limit(5)->get(); 
+        $teams = \App\Team::latest()->limit(5)->get(); 
         $timeentries = \App\TimeEntry::latest()->limit(5)->get(); 
         $contentpages = \App\ContentPage::latest()->limit(5)->get(); 
 

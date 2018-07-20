@@ -4,7 +4,6 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 use App\Traits\FilterByUser;
-use App\Traits\FilterByUser;
 
 /**
  * Class TimeEntry
