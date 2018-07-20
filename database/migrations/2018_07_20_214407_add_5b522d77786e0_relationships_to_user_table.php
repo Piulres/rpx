@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Add5b50fc7324c5eRelationshipsToUserTable extends Migration
+class Add5b522d77786e0RelationshipsToUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -29,11 +29,6 @@ class Add5b50fc7324c5eRelationshipsToUserTable extends Migration
     public function down()
     {
         Schema::table('users', function(Blueprint $table) {
-            if(Schema::hasColumn('users', 'team_id')) {
-                $table->dropForeign('185447_5b4e2b157498f');
-                $table->dropIndex('185447_5b4e2b157498f');
-                $table->dropColumn('team_id');
-            }
             
         });
     }
