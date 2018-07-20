@@ -151,14 +151,6 @@
                 </ul>
             </li>@endcan
             
-            @can('internal_notification_access')
-            <li>
-                <a href="{{ route('admin.internal_notifications.index') }}">
-                    <i class="fa fa-briefcase"></i>
-                    <span>@lang('global.internal-notifications.title')</span>
-                </a>
-            </li>@endcan
-            
             @can('faq_management_access')
             <li class="treeview">
                 <a href="#">

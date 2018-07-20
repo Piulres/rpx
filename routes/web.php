@@ -44,9 +44,6 @@ Route::group(['middleware' => ['auth', 'approved'], 'prefix' => 'admin', 'as' =>
     Route::post('content_tags_mass_destroy', ['uses' => 'Admin\ContentTagsController@massDestroy', 'as' => 'content_tags.mass_destroy']);
     Route::resource('content_pages', 'Admin\ContentPagesController');
     Route::post('content_pages_mass_destroy', ['uses' => 'Admin\ContentPagesController@massDestroy', 'as' => 'content_pages.mass_destroy']);
-    Route::get('internal_notifications/read', 'Admin\InternalNotificationsController@read');
-    Route::resource('internal_notifications', 'Admin\InternalNotificationsController');
-    Route::post('internal_notifications_mass_destroy', ['uses' => 'Admin\InternalNotificationsController@massDestroy', 'as' => 'internal_notifications.mass_destroy']);
     Route::resource('time_work_types', 'Admin\TimeWorkTypesController');
     Route::post('time_work_types_mass_destroy', ['uses' => 'Admin\TimeWorkTypesController@massDestroy', 'as' => 'time_work_types.mass_destroy']);
     Route::resource('time_projects', 'Admin\TimeProjectsController');
