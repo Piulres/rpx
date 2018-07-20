@@ -24,6 +24,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        
+        $teams = \App\Team::latest()->limit(5)->get(); 
+        $users = \App\User::latest()->limit(5)->get(); 
+        $timeentries = \App\TimeEntry::latest()->limit(5)->get(); 
+        $contentpages = \App\ContentPage::latest()->limit(5)->get(); 
+
+        return view('home', compact( 'teams', 'users', 'timeentries', 'contentpages' ));
     }
 }
