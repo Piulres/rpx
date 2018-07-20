@@ -4,7 +4,7 @@ return [
 		'user-management' => [		'title' => 'Gestão de usuários',		'fields' => [		],	],
 		'permissions' => [		'title' => 'Permissões',		'fields' => [			'title' => 'Título',		],	],
 		'roles' => [		'title' => 'Funções',		'fields' => [			'title' => 'Título',			'permission' => 'Permissões',		],	],
-		'users' => [		'title' => 'Usuários',		'fields' => [			'name' => 'Nome',			'email' => 'E-mail',			'password' => 'Senha',			'role' => 'Função',			'remember-token' => 'Lembrar Senha',			'team' => 'Equipe',		],	],
+		'users' => [		'title' => 'Usuários',		'fields' => [			'name' => 'Nome',			'email' => 'E-mail',			'password' => 'Senha',			'role' => 'Função',			'remember-token' => 'Lembrar Senha',			'team' => 'Equipe',			'approved' => 'Approved',		],	],
 		'user-actions' => [		'title' => 'Ações do usuário',		'created_at' => 'Tempo',		'fields' => [			'user' => 'Usuário',			'action' => 'Ação',			'action-model' => 'Modelo de ação',			'action-id' => 'ID de ação',		],	],
 		'teams' => [		'title' => 'Teams',		'fields' => [			'name' => 'Name',		],	],
 		'content-management' => [		'title' => 'Gestão de conteúdo',		'fields' => [		],	],
@@ -201,7 +201,7 @@ return [
 	'app_crud_event_field' => 'Campo de rótulo do evento',
 	'app_create_new_calendar_source' => 'Criar nova Fonte de Calendário',
 	'app_edit_calendar_source' => 'Editar Fonte de Calendário',
-	'app_client_management' => 'Gest~de clientes',
+	'app_client_management' => 'Gestão de clientes',
 	'app_client_management_settings' => 'Configurações de Gestão de clientes',
 	'app_country' => 'País',
 	'app_client_status' => 'Estado do cliente',
@@ -239,8 +239,8 @@ return [
 	'app_featured_image' => 'Imagem em destaque',
 	'app_change_notifications_field_2_label' => 'Quando entrar no CRUD',
 	'app_email_regards' => 'Saudações',
-	'app_register' => 'Registar',
-	'app_registration' => 'Registo',
+	'app_register' => 'Registrar',
+	'app_registration' => 'Registro',
 	'app_not_approved_title' => 'A sua conta não está aprovada',
 	'app_not_approved_p' => 'Sua conta não foi liberada ainda pelo administrador, por favor, aguarde e tente mais tarde.',
 	'app_there_were_problems_with_input' => 'Há problemas com a entrada',
@@ -261,7 +261,7 @@ return [
 	'app_customers' => 'Clientes',
 	'app_customer' => 'Cliente',
 	'app_select_all' => 'Selecionar tudo',
-	'app_deselect_all' => 'Cacelar seleção',
+	'app_deselect_all' => 'Cancelar seleção',
 	'app_team-management' => 'Equipes',
 	'app_team-management-singular' => 'Equipe',
 	'global_title' => 'RPX',
