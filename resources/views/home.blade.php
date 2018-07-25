@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="row">
-        <div class="col-md-6">
+         <div class="col-md-6">
             <div class="panel panel-default">
                 <div class="panel-heading">Recently added teams</div>
 
@@ -10,15 +10,15 @@
                     <table class="table table-bordered table-striped ajaxTable">
                         <thead>
                         <tr>
-
-                            <th> @lang('global.teams.fields.name')</th>
+                            
+                            <th> @lang('global.teams.fields.name')</th> 
                             <th>&nbsp;</th>
                         </tr>
                         </thead>
                         @foreach($teams as $team)
                             <tr>
-
-                                <td>{{ $team->name }} </td>
+                               
+                                <td>{{ $team->name }} </td> 
                                 <td>
 
                                     @can('team_view')
@@ -30,7 +30,7 @@
                                     @endcan
 
                                     @can('team_delete')
-                                    {!! Form::open(array(
+{!! Form::open(array(
                                         'style' => 'display: inline-block;',
                                         'method' => 'DELETE',
                                         'onsubmit' => "return confirm('".trans("global.app_are_you_sure")."');",
@@ -38,16 +38,16 @@
                                     {!! Form::submit(trans('global.app_delete'), array('class' => 'btn btn-xs btn-danger')) !!}
                                     {!! Form::close() !!}
                                     @endcan
-
-                                </td>
+                                
+</td>
                             </tr>
                         @endforeach
                     </table>
                 </div>
             </div>
-        </div>
+ </div>
 
-        <div class="col-md-6">
+ <div class="col-md-6">
             <div class="panel panel-default">
                 <div class="panel-heading">Recently added users</div>
 
@@ -55,19 +55,19 @@
                     <table class="table table-bordered table-striped ajaxTable">
                         <thead>
                         <tr>
-
-                            <th> @lang('global.users.fields.name')</th>
-                            <th> @lang('global.users.fields.email')</th>
-                            <th> @lang('global.users.fields.approved')</th>
+                            
+                            <th> @lang('global.users.fields.name')</th> 
+                            <th> @lang('global.users.fields.email')</th> 
+                            <th> @lang('global.users.fields.approved')</th> 
                             <th>&nbsp;</th>
                         </tr>
                         </thead>
                         @foreach($users as $user)
                             <tr>
-
-                                <td>{{ $user->name }} </td>
-                                <td>{{ $user->email }} </td>
-                                <td>{{ $user->approved }} </td>
+                               
+                                <td>{{ $user->name }} </td> 
+                                <td>{{ $user->email }} </td> 
+                                <td>{{ $user->approved }} </td> 
                                 <td>
 
                                     @can('user_view')
@@ -79,7 +79,7 @@
                                     @endcan
 
                                     @can('user_delete')
-                                    {!! Form::open(array(
+{!! Form::open(array(
                                         'style' => 'display: inline-block;',
                                         'method' => 'DELETE',
                                         'onsubmit' => "return confirm('".trans("global.app_are_you_sure")."');",
@@ -87,16 +87,16 @@
                                     {!! Form::submit(trans('global.app_delete'), array('class' => 'btn btn-xs btn-danger')) !!}
                                     {!! Form::close() !!}
                                     @endcan
-
-                                </td>
+                                
+</td>
                             </tr>
                         @endforeach
                     </table>
                 </div>
             </div>
-        </div>
+ </div>
 
-         <div class="col-md-6">
+ <div class="col-md-6">
             <div class="panel panel-default">
                 <div class="panel-heading">Recently added timeentries</div>
 
@@ -104,17 +104,17 @@
                     <table class="table table-bordered table-striped ajaxTable">
                         <thead>
                         <tr>
-
-                            <th> @lang('global.time-entries.fields.start-time')</th>
-                            <th> @lang('global.time-entries.fields.end-time')</th>
+                            
+                            <th> @lang('global.time-entries.fields.start-time')</th> 
+                            <th> @lang('global.time-entries.fields.end-time')</th> 
                             <th>&nbsp;</th>
                         </tr>
                         </thead>
                         @foreach($timeentries as $timeentry)
                             <tr>
-
-                                <td>{{ $timeentry->start_time }} </td>
-                                <td>{{ $timeentry->end_time }} </td>
+                               
+                                <td>{{ $timeentry->start_time }} </td> 
+                                <td>{{ $timeentry->end_time }} </td> 
                                 <td>
 
                                     @can('time_entry_view')
@@ -126,7 +126,7 @@
                                     @endcan
 
                                     @can('time_entry_delete')
-                                    {!! Form::open(array(
+{!! Form::open(array(
                                         'style' => 'display: inline-block;',
                                         'method' => 'DELETE',
                                         'onsubmit' => "return confirm('".trans("global.app_are_you_sure")."');",
@@ -134,16 +134,16 @@
                                     {!! Form::submit(trans('global.app_delete'), array('class' => 'btn btn-xs btn-danger')) !!}
                                     {!! Form::close() !!}
                                     @endcan
-
-                                </td>
+                                
+</td>
                             </tr>
                         @endforeach
                     </table>
                 </div>
             </div>
-         </div>
+ </div>
 
-         <div class="col-md-6">
+ <div class="col-md-6">
             <div class="panel panel-default">
                 <div class="panel-heading">Recently added contentpages</div>
 
@@ -151,19 +151,19 @@
                     <table class="table table-bordered table-striped ajaxTable">
                         <thead>
                         <tr>
-
-                            <th> @lang('global.content-pages.fields.title')</th>
-                            <th> @lang('global.content-pages.fields.page-text')</th>
-                            <th> @lang('global.content-pages.fields.excerpt')</th>
+                            
+                            <th> @lang('global.content-pages.fields.title')</th> 
+                            <th> @lang('global.content-pages.fields.page-text')</th> 
+                            <th> @lang('global.content-pages.fields.excerpt')</th> 
                             <th>&nbsp;</th>
                         </tr>
                         </thead>
                         @foreach($contentpages as $contentpage)
                             <tr>
-
-                                <td>{{ $contentpage->title }} </td>
-                                <td>{{ $contentpage->page_text }} </td>
-                                <td>{{ $contentpage->excerpt }} </td>
+                               
+                                <td>{{ $contentpage->title }} </td> 
+                                <td>{{ $contentpage->page_text }} </td> 
+                                <td>{{ $contentpage->excerpt }} </td> 
                                 <td>
 
                                     @can('content_page_view')
@@ -175,7 +175,7 @@
                                     @endcan
 
                                     @can('content_page_delete')
-                                    {!! Form::open(array(
+{!! Form::open(array(
                                         'style' => 'display: inline-block;',
                                         'method' => 'DELETE',
                                         'onsubmit' => "return confirm('".trans("global.app_are_you_sure")."');",
@@ -183,15 +183,16 @@
                                     {!! Form::submit(trans('global.app_delete'), array('class' => 'btn btn-xs btn-danger')) !!}
                                     {!! Form::close() !!}
                                     @endcan
-
-                                </td>
+                                
+</td>
                             </tr>
                         @endforeach
                     </table>
                 </div>
             </div>
-         </div>
+ </div>
 
 
     </div>
 @endsection
+

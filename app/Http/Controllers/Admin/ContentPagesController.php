@@ -10,6 +10,9 @@ use App\Http\Requests\Admin\StoreContentPagesRequest;
 use App\Http\Requests\Admin\UpdateContentPagesRequest;
 use App\Http\Controllers\Traits\FileUploadTrait;
 
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 class ContentPagesController extends Controller
 {
     use FileUploadTrait;

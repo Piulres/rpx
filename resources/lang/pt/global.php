@@ -4,14 +4,14 @@ return [
 		'user-management' => [		'title' => 'Gestão de usuários',		'fields' => [		],	],
 		'permissions' => [		'title' => 'Permissões',		'fields' => [			'title' => 'Título',		],	],
 		'roles' => [		'title' => 'Funções',		'fields' => [			'title' => 'Título',			'permission' => 'Permissões',		],	],
-		'users' => [		'title' => 'Usuários',		'fields' => [			'name' => 'Nome',			'email' => 'E-mail',			'password' => 'Senha',			'role' => 'Função',			'remember-token' => 'Lembrar Senha',			'team' => 'Equipe',			'approved' => 'Approved',		],	],
+		'users' => [		'title' => 'Usuários',		'fields' => [			'name' => 'Nome',			'email' => 'E-mail',			'password' => 'Senha',			'role' => 'Função',			'remember-token' => 'Lembrar Senha',			'team' => 'Equipe',			'approved' => 'Approved',			'created-by' => 'Created by',		],	],
 		'user-actions' => [		'title' => 'Ações do usuário',		'created_at' => 'Tempo',		'fields' => [			'user' => 'Usuário',			'action' => 'Ação',			'action-model' => 'Modelo de ação',			'action-id' => 'ID de ação',		],	],
 		'teams' => [		'title' => 'Teams',		'fields' => [			'name' => 'Name',		],	],
 		'content-management' => [		'title' => 'Gestão de conteúdo',		'fields' => [		],	],
 		'content-categories' => [		'title' => 'Categorias',		'fields' => [			'title' => 'Categoria',			'slug' => 'Slug',		],	],
 		'content-tags' => [		'title' => 'Tags',		'fields' => [			'title' => 'Tag',			'slug' => 'Slug',		],	],
 		'content-pages' => [		'title' => 'Páginas',		'fields' => [			'title' => 'Título',			'category-id' => 'Categorias',			'tag-id' => 'Tags',			'page-text' => 'Texto',			'excerpt' => 'Resumo',			'featured-image' => 'Imagem em destaque',		],	],
-		'internal-notifications' => [		'title' => 'Notifications',		'fields' => [			'text' => 'Text',			'link' => 'Link',			'users' => 'Users',		],	],
+		'internal-notifications' => [		'title' => 'Notifications',		'fields' => [		],	],
 		'time-management' => [		'title' => 'Time management',		'fields' => [		],	],
 		'time-work-types' => [		'title' => 'Work types',		'fields' => [			'name' => 'Name',		],	],
 		'time-projects' => [		'title' => 'Projetos',		'fields' => [			'name' => 'Nome',		],	],
@@ -20,6 +20,45 @@ return [
 		'faq-management' => [		'title' => 'Gestão de FAQ',		'fields' => [		],	],
 		'faq-categories' => [		'title' => 'Categorias',		'fields' => [			'title' => 'Categoria',		],	],
 		'faq-questions' => [		'title' => 'Questões',		'fields' => [			'category' => 'Categoria',			'question-text' => 'Questão',			'answer-text' => 'Resposta',		],	],
+		'basic-crm' => [		'title' => 'CRM Básico',		'fields' => [		],	],
+		'crm-statuses' => [		'title' => 'Status',		'fields' => [			'title' => 'Título',		],	],
+		'crm-customers' => [		'title' => 'Clientes',		'fields' => [			'first-name' => 'Primeiro nome',			'last-name' => 'Último nome',			'crm-status' => 'Estado',			'email' => 'E-mail',			'phone' => 'Telefone',			'address' => 'Endereço',			'skype' => 'Skype',			'website' => 'Website',			'description' => 'Descrição',		],	],
+		'crm-notes' => [		'title' => 'Notas',		'fields' => [			'customer' => 'Cliente',			'note' => 'Notas',		],	],
+		'crm-documents' => [		'title' => 'Documentos',		'fields' => [			'customer' => 'Cliente',			'name' => 'Título',			'description' => 'Descrição',			'file' => 'Arquivo',		],	],
+		'expense-management' => [		'title' => 'Expense Management',		'fields' => [		],	],
+		'expense-category' => [		'title' => 'Expense Categories',		'fields' => [			'name' => 'Name',		],	],
+		'income-category' => [		'title' => 'Categorias de entrada',		'fields' => [			'name' => 'Name',		],	],
+		'income' => [		'title' => 'Income',		'fields' => [			'income-category' => 'Income Category',			'entry-date' => 'Entry date',			'amount' => 'Amount',		],	],
+		'expense' => [		'title' => 'Despesas',		'fields' => [			'expense-category' => 'Categoria de Despesa',			'entry-date' => 'Data de entrada',			'amount' => 'Quantidade',		],	],
+		'monthly-report' => [		'title' => 'Relatório mensal',		'fields' => [		],	],
+		'internal-notifications' => [		'title' => 'Notifications',		'fields' => [			'text' => 'Text',			'link' => 'Link',			'users' => 'Users',		],	],
+		'assets-management' => [		'title' => 'Assets management',		'fields' => [		],	],
+		'assets-categories' => [		'title' => 'Categories',		'fields' => [			'title' => 'Title',		],	],
+		'assets-statuses' => [		'title' => 'Statuses',		'fields' => [			'title' => 'Title',		],	],
+		'assets-locations' => [		'title' => 'Locations',		'fields' => [			'title' => 'Title',		],	],
+		'assets' => [		'title' => 'Assets',		'fields' => [			'category' => 'Category',			'serial-number' => 'Serial number',			'title' => 'Title',			'photo1' => 'Photo1',			'photo2' => 'Photo2',			'photo3' => 'Photo3',			'status' => 'Status',			'location' => 'Location',			'assigned-user' => 'Assigned (user)',			'notes' => 'Notes',		],	],
+		'assets-history' => [		'title' => 'Assets history',		'created_at' => 'Tempo',		'fields' => [			'asset' => 'Asset',			'status' => 'Status',			'location' => 'Location',			'assigned-user' => 'Assigned (user)',		],	],
+		'contact-management' => [		'title' => 'Contact management',		'fields' => [		],	],
+		'contact-companies' => [		'title' => 'Companies',		'fields' => [			'name' => 'Company name',			'address' => 'Address',			'website' => 'Website',			'email' => 'Email',		],	],
+		'contacts' => [		'title' => 'Contacts',		'fields' => [			'company' => 'Company',			'first-name' => 'First name',			'last-name' => 'Last name',			'phone1' => 'Phone 1',			'phone2' => 'Phone 2',			'email' => 'Email',			'skype' => 'Skype',			'address' => 'Address',		],	],
+		'task-management' => [		'title' => 'Task management',		'fields' => [		],	],
+		'task-statuses' => [		'title' => 'Statuses',		'fields' => [			'name' => 'Name',		],	],
+		'task-tags' => [		'title' => 'Tags',		'fields' => [			'name' => 'Name',		],	],
+		'tasks' => [		'title' => 'Tasks',		'fields' => [			'name' => 'Name',			'description' => 'Description',			'status' => 'Status',			'tag' => 'Tags',			'attachment' => 'Attachment',			'due-date' => 'Due date',			'user' => 'Assigned to',		],	],
+		'task-calendar' => [		'title' => 'Calendar',		'fields' => [		],	],
+		'client-management' => [		'title' => 'Client management',		'fields' => [		],	],
+		'client-management-settings' => [		'title' => 'Client management settings',		'fields' => [		],	],
+		'client-currencies' => [		'title' => 'Currencies',		'fields' => [			'title' => 'Title',			'code' => 'Code',			'main-currency' => 'Main currency',		],	],
+		'client-transaction-types' => [		'title' => 'Transaction types',		'fields' => [			'title' => 'Title',		],	],
+		'client-income-sources' => [		'title' => 'Income sources',		'fields' => [			'title' => 'Title',			'fee-percent' => 'Fee percent',		],	],
+		'client-statuses' => [		'title' => 'Client statuses',		'fields' => [			'title' => 'Title',		],	],
+		'client-project-statuses' => [		'title' => 'Project statuses',		'fields' => [			'title' => 'Title',		],	],
+		'clients' => [		'title' => 'Clients',		'fields' => [			'first-name' => 'First name',			'last-name' => 'Last name',			'company-name' => 'Company',			'email' => 'Email',			'phone' => 'Phone',			'website' => 'Website',			'skype' => 'Skype',			'country' => 'Country',			'client-status' => 'Client status',		],	],
+		'client-projects' => [		'title' => 'Projects',		'fields' => [			'title' => 'Title',			'client' => 'Client',			'description' => 'Description',			'date' => 'Start date',			'budget' => 'Budget',			'project-status' => 'Project status',		],	],
+		'client-notes' => [		'title' => 'Notes',		'fields' => [			'project' => 'Project',			'text' => 'Note text',		],	],
+		'client-documents' => [		'title' => 'Documents',		'fields' => [			'project' => 'Project',			'title' => 'Title',			'description' => 'Description',			'file' => 'File',		],	],
+		'client-transactions' => [		'title' => 'Transactions',		'fields' => [			'project' => 'Project',			'transaction-type' => 'Transaction type',			'income-source' => 'Income source',			'title' => 'Title',			'description' => 'Description',			'amount' => 'Amount',			'currency' => 'Currency',			'transaction-date' => 'Transaction date',		],	],
+		'client-reports' => [		'title' => 'Reports',		'fields' => [		],	],
 	'app_create' => 'Criar',
 	'app_save' => 'Salvar',
 	'app_edit' => 'Editar',

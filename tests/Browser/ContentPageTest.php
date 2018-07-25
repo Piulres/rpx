@@ -15,10 +15,10 @@ class ContentPageTest extends DuskTestCase
         $content_page = factory('App\ContentPage')->make();
 
         $relations = [
-            factory('App\Contentcategory')->create(), 
-            factory('App\Contentcategory')->create(), 
-            factory('App\Contenttag')->create(), 
-            factory('App\Contenttag')->create(), 
+            factory('App\ContentCategory')->create(), 
+            factory('App\ContentCategory')->create(), 
+            factory('App\ContentTag')->create(), 
+            factory('App\ContentTag')->create(), 
         ];
 
         $this->browse(function (Browser $browser) use ($admin, $content_page, $relations) {
@@ -54,10 +54,10 @@ class ContentPageTest extends DuskTestCase
         $content_page2 = factory('App\ContentPage')->make();
 
         $relations = [
-            factory('App\Contentcategory')->create(), 
-            factory('App\Contentcategory')->create(), 
-            factory('App\Contenttag')->create(), 
-            factory('App\Contenttag')->create(), 
+            factory('App\ContentCategory')->create(), 
+            factory('App\ContentCategory')->create(), 
+            factory('App\ContentTag')->create(), 
+            factory('App\ContentTag')->create(), 
         ];
 
         $this->browse(function (Browser $browser) use ($admin, $content_page, $content_page2, $relations) {
@@ -92,10 +92,10 @@ class ContentPageTest extends DuskTestCase
         $content_page = factory('App\ContentPage')->create();
 
         $relations = [
-            factory('App\Contentcategory')->create(), 
-            factory('App\Contentcategory')->create(), 
-            factory('App\Contenttag')->create(), 
-            factory('App\Contenttag')->create(), 
+            factory('App\ContentCategory')->create(), 
+            factory('App\ContentCategory')->create(), 
+            factory('App\ContentTag')->create(), 
+            factory('App\ContentTag')->create(), 
         ];
 
         $content_page->category_id()->attach([$relations[0]->id, $relations[1]->id]);

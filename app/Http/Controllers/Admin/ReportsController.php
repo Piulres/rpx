@@ -3,12 +3,12 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\ContentPage;
+use App\Expense;
 use Carbon\Carbon; 
 
 class ReportsController extends Controller
 {
-    public function reportTimeManagement(Request $request)
+    public function reportExpenses2507(Request $request)
     {
          if ($request->has('date_filter')) { 
               $parts = explode(' - ' , $request->input('date_filter')); 
@@ -18,11 +18,11 @@ class ReportsController extends Controller
               $date_from = new Carbon('last Monday');
               $date_to = new Carbon('this Sunday');
          } 
-        $reportTitle = 'Report Time Management';
+        $reportTitle = 'Report Expenses 25/07';
         $reportLabel = 'SUM';
-        $chartType   = 'pie';
+        $chartType   = 'line';
 
-        $results = ContentPage::where('created_at', '>=', $date_from)->where('created_at', '<=', $date_to)->get()->sortBy('created_at')->groupBy(function ($entry) {
+        $results = Expense::where('created_at', '>=', $date_from)->where('created_at', '<=', $date_to)->get()->sortBy('created_at')->groupBy(function ($entry) {
             if ($entry->created_at instanceof \Carbon\Carbon) {
                 return \Carbon\Carbon::parse($entry->created_at)->format('Y-m-d');
             }

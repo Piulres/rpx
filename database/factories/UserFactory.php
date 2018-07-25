@@ -8,5 +8,6 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         "remember_token" => $faker->name,
         "team_id" => factory('App\Team')->create(),
         "approved" => 0,
+        "created_by_id" => factory('App\User')->create(),
     ];
 });
