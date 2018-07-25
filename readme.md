@@ -41,8 +41,24 @@ Password: password
 
 - Reports
 
-## [1.0.3] - 2018-07-25
+## [1.0.3] - 2018-07-24
 ### fixerrors
 
 - Reports
 - Page Home
+
+## [1.0.4] - 2018-07-25
+### Added
+
+- Contact Management
+- Dashboard widgets
+- Basic CRM
+- Time Management
+- Expense Management
+- FAQ Management
+- Registration
+- Multi-tenancy
+- Tasks + Calendar
+- Social login
+- Client Management
+- Assets Management
