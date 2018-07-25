@@ -14,10 +14,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        
-        // redirect to login screen if has no auth
         $this->middleware('auth');
-
     }
 
     /**
