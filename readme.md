@@ -1,5 +1,5 @@
 # RPX
-> Version 1.0.0
+> Version 1.0.3
 
 Prepare your .env file there with database connection and other settings
 
@@ -36,8 +36,13 @@ Password: password
 - Language Switcher
 - Mega Search
 
-## [1.0.1] - 2018-07-19
-### Added
-- System calendar
-- Multi-tenancy
-- Reports generator
+## [1.0.1] - 2018-07-20
+### fixerrors
+
+- Reports
+
+## [1.0.3] - 2018-07-25
+### fixerrors
+
+- Reports
+- Page Home
