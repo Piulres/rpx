@@ -17,6 +17,7 @@ class ContentPage extends Model
     protected $fillable = ['title', 'page_text', 'excerpt', 'featured_image'];
     protected $hidden = [];
     public static $searchable = [
+        'title',
     ];
     
     public static function boot()

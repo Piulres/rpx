@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreUsersRequest;
 use App\Http\Requests\Admin\UpdateUsersRequest;
+use Yajra\DataTables\DataTables;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Input;
 
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
@@ -24,11 +27,75 @@ class UsersController extends Controller
         if (! Gate::allows('user_access')) {
             return abort(401);
         }
+        if ($filterBy = Input::get('filter')) {
+            if ($filterBy == 'all') {
+                Session::put('User.filter', 'all');
+            } elseif ($filterBy == 'my') {
+                Session::put('User.filter', 'my');
+            }
+        }
 
+        
+        if (request()->ajax()) {
+            $query = User::query();
+            $query->with("role");
+            $query->with("team");
+            $query->with("created_by");
+            $template = 'actionsTemplate';
+            
+            $query->select([
+                'users.id',
+                'users.name',
+                'users.email',
+                'users.password',
+                'users.remember_token',
+                'users.team_id',
+                'users.approved',
+                'users.created_by_id',
+            ]);
+            $table = Datatables::of($query);
 
-                $users = User::all();
+            $table->setRowAttr([
+                'data-entry-id' => '{{$id}}',
+            ]);
+            $table->addColumn('massDelete', '&nbsp;');
+            $table->addColumn('actions', '&nbsp;');
+            $table->editColumn('actions', function ($row) use ($template) {
+                $gateKey  = 'user_';
+                $routeKey = 'admin.users';
 
-        return view('admin.users.index', compact('users'));
+                return view($template, compact('row', 'gateKey', 'routeKey'));
+            });
+            $table->editColumn('password', function ($row) {
+                return '---';
+            });
+            $table->editColumn('role.title', function ($row) {
+                if(count($row->role) == 0) {
+                    return '';
+                }
+
+                return '<span class="label label-info label-many">' . implode('</span><span class="label label-info label-many"> ',
+                        $row->role->pluck('title')->toArray()) . '</span>';
+            });
+            $table->editColumn('remember_token', function ($row) {
+                return $row->remember_token ? $row->remember_token : '';
+            });
+            $table->editColumn('team.name', function ($row) {
+                return $row->team ? $row->team->name : '';
+            });
+            $table->editColumn('approved', function ($row) {
+                return \Form::checkbox("approved", 1, $row->approved == 1, ["disabled"]);
+            });
+            $table->editColumn('created_by.name', function ($row) {
+                return $row->created_by ? $row->created_by->name : '';
+            });
+
+            $table->rawColumns(['actions','massDelete','role.title','approved']);
+
+            return $table->make(true);
+        }
+
+        return view('admin.users.index');
     }
 
     /**
@@ -45,8 +112,9 @@ class UsersController extends Controller
         $roles = \App\Role::get()->pluck('title', 'id');
 
         $teams = \App\Team::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');
+        $created_bies = \App\User::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');
 
-        return view('admin.users.create', compact('roles', 'teams'));
+        return view('admin.users.create', compact('roles', 'teams', 'created_bies'));
     }
 
     /**
@@ -84,10 +152,11 @@ class UsersController extends Controller
         $roles = \App\Role::get()->pluck('title', 'id');
 
         $teams = \App\Team::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');
+        $created_bies = \App\User::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');
 
         $user = User::findOrFail($id);
 
-        return view('admin.users.edit', compact('user', 'roles', 'teams'));
+        return view('admin.users.edit', compact('user', 'roles', 'teams', 'created_bies'));
     }
 
     /**
@@ -126,14 +195,15 @@ class UsersController extends Controller
         
         $roles = \App\Role::get()->pluck('title', 'id');
 
-        $teams = \App\Team::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');$user_actions = \App\UserAction::where('user_id', $id)->get();$internal_notifications = \App\InternalNotification::whereHas('users',
+        $teams = \App\Team::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');
+        $created_bies = \App\User::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');$user_actions = \App\UserAction::where('user_id', $id)->get();$internal_notifications = \App\InternalNotification::whereHas('users',
                     function ($query) use ($id) {
                         $query->where('id', $id);
-                    })->get();$time_entries = \App\TimeEntry::where('created_by_id', $id)->get();
+                    })->get();$assets_histories = \App\AssetsHistory::where('assigned_user_id', $id)->get();$time_entries = \App\TimeEntry::where('created_by_id', $id)->get();$tasks = \App\Task::where('user_id', $id)->get();$users = \App\User::where('created_by_id', $id)->get();$assets = \App\Asset::where('assigned_user_id', $id)->get();
 
         $user = User::findOrFail($id);
 
-        return view('admin.users.show', compact('user', 'user_actions', 'internal_notifications', 'time_entries'));
+        return view('admin.users.show', compact('user', 'user_actions', 'internal_notifications', 'assets_histories', 'time_entries', 'tasks', 'users', 'assets'));
     }
 
 

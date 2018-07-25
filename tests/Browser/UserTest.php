@@ -98,6 +98,7 @@ class UserTest extends DuskTestCase
                 ->assertSeeIn("tr:last-child td[field-key='role'] span:last-child", $relations[1]->title)
                 ->assertSeeIn("td[field-key='team']", $user->team->name)
                 ->assertNotChecked("approved")
+                ->assertSeeIn("td[field-key='created_by']", $user->created_by->name)
                 ->logout();
         });
     }

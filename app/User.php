@@ -5,6 +5,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Auth\Notifications\ResetPassword;
 use Hash;
+use App\Traits\FilterByUser;
 use App\Traits\FilterByTeam;
 
 /**
@@ -17,15 +18,17 @@ use App\Traits\FilterByTeam;
  * @property string $remember_token
  * @property string $team
  * @property tinyInteger $approved
+ * @property string $created_by
 */
 class User extends Authenticatable
 {
     use Notifiable;
-    use FilterByTeam;
+    use FilterByUser, FilterByTeam;
 
-    protected $fillable = ['name', 'email', 'password', 'remember_token', 'approved', 'team_id'];
+    protected $fillable = ['name', 'email', 'password', 'remember_token', 'approved', 'team_id', 'created_by_id'];
     protected $hidden = ['password', 'remember_token'];
     public static $searchable = [
+        'name',
     ];
     
     public static function boot()
@@ -54,6 +57,15 @@ class User extends Authenticatable
     {
         $this->attributes['team_id'] = $input ? $input : null;
     }
+
+    /**
+     * Set to null if empty
+     * @param $input
+     */
+    public function setCreatedByIdAttribute($input)
+    {
+        $this->attributes['created_by_id'] = $input ? $input : null;
+    }
     
     public function role()
     {
@@ -63,6 +75,11 @@ class User extends Authenticatable
     public function team()
     {
         return $this->belongsTo(Team::class, 'team_id');
+    }
+    
+    public function created_by()
+    {
+        return $this->belongsTo(User::class, 'created_by_id');
     }
     
     public function topics() {
