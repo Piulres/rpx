@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Add5b58992f661a9RelationshipsToClientNoteTable extends Migration
+class Add5b589aa57eff8RelationshipsToClientNoteTable extends Migration
 {
     /**
      * Run the migrations.

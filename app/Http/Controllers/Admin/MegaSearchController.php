@@ -9,6 +9,7 @@ class MegaSearchController extends Controller
     protected $models = [
         'User' => 'global.users.title',
         'ContentPage' => 'global.content-pages.title',
+        'Asset' => 'global.assets.title',
     ];
 
     public function search(Request $request)

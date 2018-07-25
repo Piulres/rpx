@@ -23,6 +23,7 @@ class Asset extends Model
     protected $fillable = ['serial_number', 'title', 'photo1', 'photo2', 'photo3', 'notes', 'category_id', 'status_id', 'location_id', 'assigned_user_id'];
     protected $hidden = [];
     public static $searchable = [
+        'title',
     ];
     
     public static function boot()
