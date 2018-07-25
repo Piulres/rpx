@@ -1,5 +1,5 @@
 # RPX
-> Version 1.0.3
+> Version 1.0.4
 
 Prepare your .env file there with database connection and other settings
 
