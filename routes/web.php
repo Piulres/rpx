@@ -28,8 +28,7 @@ Route::group(['middleware' => ['auth', 'approved'], 'prefix' => 'admin', 'as' =>
     Route::get('/home', 'HomeController@index');
     Route::get('/reports/report-expenses-2507', 'Admin\ReportsController@reportExpenses2507');
 
-    Route::get('/calendar', 'Admin\SystemCalendarController@index'); 
-  
+    
     Route::resource('assets', 'Admin\AssetsController');
     Route::post('assets_mass_destroy', ['uses' => 'Admin\AssetsController@massDestroy', 'as' => 'assets.mass_destroy']);
     Route::resource('tasks', 'Admin\TasksController');
