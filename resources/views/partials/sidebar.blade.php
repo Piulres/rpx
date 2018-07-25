@@ -16,15 +16,6 @@
                 </a>
             </li>
 
-            <li>
-                <a href="{{url('admin/calendar')}}">
-                  <i class="fa fa-calendar"></i>
-                  <span class="title">
-                    Calendar
-                  </span>
-                </a>
-            </li>
-        
             @can('user_management_access')
             <li class="treeview">
                 <a href="#">
@@ -469,6 +460,14 @@
                         <a href="{{ route('admin.client_transactions.index') }}">
                             <i class="fa fa-credit-card"></i>
                             <span>@lang('global.client-transactions.title')</span>
+                        </a>
+                    </li>@endcan
+                    
+                    @can('client_report_access')
+                    <li>
+                        <a href="{{ route('admin.client_reports.index') }}">
+                            <i class="fa fa-bar-chart"></i>
+                            <span>@lang('global.client-reports.title')</span>
                         </a>
                     </li>@endcan
                     
